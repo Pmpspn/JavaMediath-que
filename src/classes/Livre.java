@@ -20,6 +20,10 @@ public class Livre extends Article {
 		this.id=id_livre;
 	}
 
+	public int getIdLivre() {
+		return id;
+	}
+
 	public Auteur getAuteur() {
 		return auteur;
 	}

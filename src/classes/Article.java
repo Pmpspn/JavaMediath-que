@@ -39,6 +39,10 @@ public abstract class Article {
 		return this.prix;
 	}
 
+	public int getIdArticle() {
+		return id;
+	}
+
 	// setters
 	public void setReference(String uneRef) {
 		this.reference = uneRef;
