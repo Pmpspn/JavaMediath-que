@@ -20,25 +20,8 @@ public class Realisateur extends Personne {
 
 	public Realisateur(){}
 
-	public ArrayList<Video> getVideos() {
-		return videos;
-	}
-
-	public void setVideos(ArrayList<Video> videos) {
-		this.videos = videos;
-	}
-
 	public int getIdRealisateur() {
 		return idRealisateur;
-	}
-
-	public void setIdRealisateur(int idRealisateur) {
-		this.idRealisateur = idRealisateur;
-	}
-
-	public void AjouterVideo(Video v) {
-		this.videos.add(v);
-		v.setRealisateur(this);
 	}
 
 }

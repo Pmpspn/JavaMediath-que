@@ -18,24 +18,7 @@ public class Auteur extends Personne {
 
 	public Auteur(){}
 
-    public ArrayList<Livre> getLivres() {
-		return livres;
-	}
-
-	public void setVideos(ArrayList<Livre> livres) {
-		this.livres = livres;
-	}
-
-	public void AjouterLivre(Livre l) {
-		this.livres.add(l);
-		l.setAuteur(this);
-	}
-
 	public int getIdAuteur() {
 		return idAuteur;
-	}
-
-	public void setIdAuteur(int idAuteur) {
-		this.idAuteur = idAuteur;
 	}
 }

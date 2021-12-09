@@ -24,9 +24,7 @@ public abstract class Article {
 		this.designation = uneDesi;
 		this.prix = unPrix;
 	}
-
-	// accesseurs
-	// getters
+	// getters and setters
 	public String getReference() {
 		return this.reference;
 	}

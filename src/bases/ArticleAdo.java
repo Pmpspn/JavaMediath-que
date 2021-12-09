@@ -26,12 +26,12 @@ public class ArticleAdo {
                 res.next();
                 id = res.getInt("LAST_INSERT_ID()");
             }
-            query = "INSERT INTO `mediatheque`.`livre` (`isbn`, `nb_pages`,`id_article`, `id_auteur`) VALUES (?,?,?,?);";
+            query = "INSERT INTO `mediatheque`.`livre` (`isbn`, `nb_pages`,`id_article`, `id_auteur`) VALUES (?,?,?,1);";
             command = connection.prepareStatement(query);
             command.setString(1, l.getIsbn());
             command.setInt(2, l.getNbPages());
             command.setInt(3, id);
-            command.setInt(4, 1);
+            command.setInt(4, l.getAuteur().getIdAuteur());
             command.executeUpdate();
         } catch (SQLException e) {
             System.out.println("here : " + e);
@@ -116,10 +116,11 @@ public class ArticleAdo {
                 res.next();
                 id = res.getInt("LAST_INSERT_ID()");
             }
-            query = "INSERT INTO `mediatheque`.`video` (`duree`, `id_article`, `id_realisateur`) VALUES (?,?,'1');";
+            query = "INSERT INTO `mediatheque`.`video` (`duree`, `id_article`, `id_realisateur`) VALUES (?,?,4);";
             command = connection.prepareStatement(query);
             command.setInt(1, v.getDuree());
             command.setInt(2, id);
+            //command.setInt(3, v.getRealisateur().getIdRealisateur());
             command.executeUpdate();
         } catch (SQLException e) {
             System.out.println("here : " + e);

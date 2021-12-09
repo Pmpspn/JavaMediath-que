@@ -184,6 +184,25 @@ public abstract class PersonneAdo {
         }
     }
 
+    public static Realisateur getRealisateur(int idRealisateur) {
+        Connection connection = Ado.init();
+        Realisateur r = new Realisateur();
+        try {
+            String query = "SELECT * FROM realisteur r INNER JOIN personne p ON r.id_personne = p.id_personne WHERE r.id_auteur=?;";
+            PreparedStatement command = connection.prepareStatement(query);
+            command.setInt(1, idRealisateur);
+            boolean result = command.execute();
+            if (result) {
+                ResultSet rs = command.getResultSet();
+                rs.next();
+                r = new Realisateur(rs.getInt("id_personne"), rs.getString("nom"), rs.getString("prenom"), rs.getInt("id_auteur"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Une erreur est survenue " + e);
+        }
+        return r;
+    }
+
     public static Auteur getAuteur(int idAuteur) {
         Connection connection = Ado.init();
         Auteur a = new Auteur();
@@ -201,25 +220,6 @@ public abstract class PersonneAdo {
             System.out.println("Une erreur est survenue " + e);
         }
         return a;
-    }
-
-    public static Realisateur getRealisateur(int idRealisateur) {
-        Connection connection = Ado.init();
-        Realisateur r = new Realisateur();
-        try {
-            String query = "SELECT * FROM realisateur r INNER JOIN personne p ON r.id_personne = p.id_personne WHERE r.id_auteur=?;";
-            PreparedStatement command = connection.prepareStatement(query);
-            command.setInt(1, idRealisateur);
-            boolean result = command.execute();
-            if (result) {
-                ResultSet rs = command.getResultSet();
-                rs.next();
-                r = new Realisateur(rs.getInt("id_personne"), rs.getString("nom"), rs.getString("prenom"), rs.getInt("id_auteur"));
-            }
-        } catch (SQLException e) {
-            System.out.println("Une erreur est survenue " + e);
-        }
-        return r;
     }
 
 }

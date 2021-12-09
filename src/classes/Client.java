@@ -27,15 +27,6 @@ public class Client extends Personne {
 		this.articles = new ArrayList<Emprunter>();
 	}
 
-	public void AjouterArticle(Article a) {
-		Emprunter emp = new Emprunter(LocalDate.now(), a);
-		articles.add(emp);
-	}
-
-	public ArrayList<Emprunter> getArticles() {
-		return articles;
-	}
-
 	public void setArticles(ArrayList<Emprunter> articles) {
 		this.articles = articles;
 	}
