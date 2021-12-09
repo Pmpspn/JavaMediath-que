@@ -170,17 +170,18 @@ public class LivrePanel extends JPanel implements ActionListener, MouseListener 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == valider) {
             if (update == null) {
-                Livre l = new Livre(this.reference.getText(),this.designation.getText(),Double.parseDouble(prix.getText()),this.isbn.getText(),Integer.parseInt(this.pages.getText()));
+                Livre l = new Livre(this.reference.getText(),this.designation.getText(),Double. parseDouble(prix.getText()),this.isbn.getText(),Integer.parseInt(this.pages.getText()));
                 Auteur a  = (Auteur)auteurs.getSelectedItem();
                 l.setAuteur(a);
                 ArticleAdo.createLivre(l);
-                Main.livres.add(l);
+                Main.livres = ArticleAdo.fetchLivre();
             } else {
                 update.setDesignation(this.designation.getText());
                 update.setReference(this.reference.getText());
                 update.setPrix(Double.parseDouble(prix.getText()));
                 update.setIsbn(this.isbn.getText());
                 update.setNbPages(Integer.parseInt(this.pages.getText()));
+                ArticleAdo.updateLivre(update);
             }
 
             model = new LivreTableModel();
@@ -205,9 +206,11 @@ public class LivrePanel extends JPanel implements ActionListener, MouseListener 
                 int index = 0;
                 boolean ok =true;
                 for (int i = 0; i < Main.livres.size(); i++) {
-                    if (Boolean.parseBoolean(model.getValueAt(index, 6).toString()) == true) {
-                        Main.livres .remove(i);
-                        //i--;
+                    if (Boolean.parseBoolean(model.getValueAt(index, 6).toString())) {
+                        Livre l = Main.livres.get(i);
+                        ArticleAdo.deleteLivre(l);
+                        Main.livres.remove(i);
+                        i--;
                     }
                     index++;
                 }

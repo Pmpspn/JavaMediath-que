@@ -1,5 +1,7 @@
 package classes;
 
+import bases.PersonneAdo;
+
 public class Livre extends Article {
 
 	private int id;
@@ -20,7 +22,19 @@ public class Livre extends Article {
 		this.id=id_livre;
 	}
 
-	public int getIdLivre() {
+	public void setIdLivre(int id) {
+		this.id = id;
+	}
+
+	public Livre(int unId, String uneRef, String uneDesi, Double unPrix, String unIsbn, int unNbPages, int idLivre, int idAuteur) {
+		super(unId,uneRef, uneDesi, unPrix);
+		this.isbn = unIsbn;
+		this.nbPages = unNbPages;
+		this.setIdLivre(idLivre);
+		this.auteur= PersonneAdo.getAuteur(idAuteur);
+	}
+
+    public int getIdLivre() {
 		return id;
 	}
 

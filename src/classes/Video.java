@@ -1,5 +1,7 @@
 package classes;
 
+import bases.PersonneAdo;
+
 public class Video extends Article {
 	private int duree;
 	private Realisateur realisateur;
@@ -9,6 +11,20 @@ public class Video extends Article {
 		this.duree = uneDuree;
 	}
 
+	public void setIdVideo(int id) {
+		this.id = id;
+	}
+
+	public Video(int unId, String uneRef, String uneDesi, Double unPrix, int uneDuree, int idVideo, int idRealisateur) {
+		super(unId,uneRef, uneDesi, unPrix);
+		this.duree = uneDuree;
+		this.setIdVideo(idVideo);
+		this.realisateur= PersonneAdo.getRealisateur(idRealisateur);
+	}
+
+	public int getIdVideo() {
+		return id;
+	}
 	public int getDuree() {
 		return duree;
 	}
@@ -27,7 +43,7 @@ public class Video extends Article {
 
 	@Override
 	public String toString() {
-		return super.toString() + "Durée : " + this.duree;
+		return super.toString() + "Durï¿½e : " + this.duree;
 	}
 
 }

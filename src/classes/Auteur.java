@@ -16,7 +16,9 @@ public class Auteur extends Personne {
 		this.livres = new ArrayList<Livre>();
 	}
 
-	public ArrayList<Livre> getLivres() {
+	public Auteur(){}
+
+    public ArrayList<Livre> getLivres() {
 		return livres;
 	}
 

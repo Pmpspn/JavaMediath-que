@@ -18,6 +18,8 @@ public class Realisateur extends Personne {
 		this.videos = new ArrayList<Video>();
 	}
 
+	public Realisateur(){}
+
 	public ArrayList<Video> getVideos() {
 		return videos;
 	}

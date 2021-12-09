@@ -12,10 +12,7 @@ import java.awt.event.MouseListener;
 import javax.swing.*;
 
 import bases.ArticleAdo;
-import classes.Video;
-import classes.Realisateur;
-import classes.Client;
-import classes.Auteur;
+import classes.*;
 import main.Main;
 import models.LivreTableModel;
 import models.VideoTableModel;
@@ -164,7 +161,7 @@ public class VideoPanel extends JPanel implements ActionListener, MouseListener 
                 Realisateur r  = (Realisateur) realisateurs.getSelectedItem();
                 v.setRealisateur(r);
                 ArticleAdo.createVideo(v);
-                Main.videos.add(v);
+                Main.videos = ArticleAdo.fetchVideo();
             } else {
                 update.setDesignation(this.designation.getText());
                 update.setReference(this.reference.getText());
@@ -194,9 +191,11 @@ public class VideoPanel extends JPanel implements ActionListener, MouseListener 
                 int index = 0;
                 boolean ok =true;
                 for (int i = 0; i < Main.videos.size(); i++) {
-                    if (Boolean.parseBoolean(model.getValueAt(index, 5).toString()) == true) {
+                    if (Boolean.parseBoolean(model.getValueAt(index, 5).toString())) {
+                        Video v = Main.videos.get(i);
+                        ArticleAdo.deleteVideo(v);
                         Main.videos.remove(i);
-                        //i--;
+                        i--;
                     }
                     index++;
                 }
